@@ -14,8 +14,8 @@ public class Credit {
     private double ratePerMonth;
 
     /**
-     * @param baseAmount total credit amount in Euros
-     * @param interestRate in percent
+     * @param baseAmount       total credit amount in Euros
+     * @param interestRate     in percent
      * @param durationInMonths duration of credit payment in months
      */
     public Credit(double baseAmount, double interestRate, int durationInMonths) {
@@ -30,25 +30,36 @@ public class Credit {
      */
     public double getAnnualPercentageRate() {
 
-        double p2 = 0;
+        double p2 = 0; // %
         double p1 = 0;
 
         while (f(p2) > 0) {
-            p2 += 0.5;
+            p2 += 0.5; // %
         }
 //        Interval found!
+        double pMiddle;
         do {
-            if (f(p1) > f(p2)) {
-                p1 = (p2 + p1) / 2;
+            pMiddle = (p1 + p2) / 2;
+            if (f(pMiddle) < 0) {
+                p2 = pMiddle;
             } else {
-                p2 = (p2 + p1) / 2;
+                p1 = pMiddle;
             }
         } while (Math.abs(f(p2)) - Math.abs(f(p1)) > RATE_ACCURACY);
 
-        return p2;
+        return p2 / 100;
     }
 
-    private double f(double p) {
+    /**
+     * @param p percentage / 100
+     * @return f(p)
+     */
+    private double f(double p) throws IllegalArgumentException {
+        p = p / 100;
+        if (p < 0 || p > 1) {
+            throw new IllegalArgumentException("p must be between 0 and 1 but is " + p);
+        }
+
         return (1 + p) * baseAmount - sigma(p) * ratePerMonth;
     }
 
@@ -60,6 +71,7 @@ public class Credit {
         return sum;
     }
 
+    @Override
     public String toString() {
         return "Credit information: \nBase amount: " + baseAmount + "\nInterest rate: " + interestRate +
                 "\nDuration in months: " + durationInMonths + "\nRate per month: " + ratePerMonth +
@@ -68,6 +80,7 @@ public class Credit {
 
     /**
      * source of formula: https://www.finanzen-rechner.net/kredit/monatsrate-berechnen.html
+     *
      * @return rate to pay per month
      */
     private double getRatePerMonth() {
