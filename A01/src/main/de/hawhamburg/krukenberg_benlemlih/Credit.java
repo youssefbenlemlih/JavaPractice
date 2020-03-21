@@ -30,22 +30,22 @@ public class Credit {
      */
     public double getAnnualPercentageRate() {
 
-        double p1 = 0;
         double p2 = 0;
+        double p1 = 0;
 
-        while (f(p1) > 0) {
-            p1 += 0.5;
+        while (f(p2) > 0) {
+            p2 += 0.5;
         }
 //        Interval found!
         do {
-            if (f(p2) > f(p1)) {
-                p2 = (p1 + p2) / 2;
+            if (f(p1) > f(p2)) {
+                p1 = (p2 + p1) / 2;
             } else {
-                p1 = (p1 + p2) / 2;
+                p2 = (p2 + p1) / 2;
             }
-        } while (Math.abs(f(p1)) - Math.abs(f(p2)) > RATE_ACCURACY);
+        } while (Math.abs(f(p2)) - Math.abs(f(p1)) > RATE_ACCURACY);
 
-        return p1;
+        return p2;
     }
 
     private double f(double p) {
@@ -54,7 +54,7 @@ public class Credit {
 
     private double sigma(double p) {
         double sum = 0;
-        for (int j = 0; j < durationInMonths / 12 - 1; j++) {
+        for (int j = 0; j <= durationInMonths / 12 - 1; j++) {
             sum += Math.pow(1 + p, j);
         }
         return sum;
