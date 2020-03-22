@@ -30,24 +30,25 @@ public class Credit {
      */
     public double getAnnualPercentageRate() {
 
-        double p2 = 0; // %
-        double p1 = 0;
+        double p2 = 0; // percentage / 100
+        double p1 = 0; // percentage / 100
 
-        while (f(p2) > 0) {
-            p2 += 0.5; // %
+        while (f(p2) < 0) {
+            System.out.println(f(p2));
+            p2 += 0.005;
         }
-//        Interval found!
+
         double pMiddle;
         do {
             pMiddle = (p1 + p2) / 2;
-            if (f(pMiddle) < 0) {
+            if (f(pMiddle) > 0) {
                 p2 = pMiddle;
             } else {
                 p1 = pMiddle;
             }
-        } while (Math.abs(f(p2)) - Math.abs(f(p1)) > RATE_ACCURACY);
+        } while (Math.abs(f(p2) - f(p1)) > RATE_ACCURACY);
 
-        return p2 / 100;
+        return (p1 + p2) / 2;
     }
 
     /**
@@ -55,12 +56,15 @@ public class Credit {
      * @return f(p)
      */
     private double f(double p) throws IllegalArgumentException {
-        p = p / 100;
         if (p < 0 || p > 1) {
             throw new IllegalArgumentException("p must be between 0 and 1 but is " + p);
         }
 
-        return (1 + p) * baseAmount - sigma(p) * ratePerMonth;
+        // https://de.wikipedia.org/wiki/Effektiver_Jahreszins
+        return baseAmount * (1 + p) - ratePerMonth * (durationInMonths + (((durationInMonths - 1.0) * durationInMonths) / (2 * durationInMonths)) * p);
+
+//        https://books.google.de/books?id=REcwk9DUpowC&pg=PA217&lpg=PA217&dq=effektiver+jahreszins+nullstelle&source=bl&ots=1ml3Q_NTQK&sig=ACfU3U2lcvhMXN2qjZ-mLhXBPU64RpOsdQ&hl=de&sa=X&ved=2ahUKEwiGt6Dpv6noAhVENOwKHWK5BakQ6AEwF3oECAkQAQ#v=onepage&q&f=false
+//        return Math.pow(1 + p, durationInMonths / 12.0) * baseAmount - sigma(p) * ratePerMonth;
     }
 
     private double sigma(double p) {
