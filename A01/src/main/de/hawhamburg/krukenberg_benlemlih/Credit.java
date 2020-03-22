@@ -2,7 +2,7 @@ package main.de.hawhamburg.krukenberg_benlemlih;
 
 public class Credit {
 
-    public static final double RATE_ACCURACY = 0.0001;
+    public static final double RATE_ACCURACY = 0.000001;
 
     public double baseAmount;
     /**
@@ -30,11 +30,11 @@ public class Credit {
      */
     public double getAnnualPercentageRate() {
 
-        double p2 = 0; // percentage / 100
-        double p1 = 0; // percentage / 100
+        double p1 = 0, p2 = 0; // percentage / 100
 
         while (f(p2) < 0) {
             System.out.println(f(p2));
+            p1 = p2;
             p2 += 0.005;
         }
 
@@ -48,7 +48,7 @@ public class Credit {
             }
         } while (Math.abs(f(p2) - f(p1)) > RATE_ACCURACY);
 
-        return (p1 + p2) / 2;
+        return Math.round(((p1 + p2) / 2) * 10000) / 10000.0;
     }
 
     /**
