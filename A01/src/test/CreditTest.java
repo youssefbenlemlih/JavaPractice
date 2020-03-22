@@ -1,24 +1,39 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import main.de.hawhamburg.krukenberg_benlemlih.Credit;
 
-class CreditTest {
+/**
+ * Tests for credit calculations on class Credit
+ *
+ * @author Jonas Krukenberg
+ * @author Youssef Benlemlih
+ */
+public class CreditTest {
 
     private Credit credit;
 
-    @org.junit.jupiter.api.Test
-    void setUp() {
+    @Before
+    public void before() {
         credit = new Credit(10000, 3.88, 84);
     }
 
-    @org.junit.jupiter.api.Test
-    void getAnnualPercentageRate() {
-        credit = new Credit(10000, 3.88, 84);
-        assertEquals(credit.f(0.03), credit.f2(0.03));
-        for (double p = 0.001; p < 1; p++) {
-            assertEquals(credit.f(p), credit.f2(p));
-        }
+    @Test
+    public void ratePerMonth() {
+        assertEquals(136.14, credit.ratePerMonth, 1E-6);
+    }
+
+    @Test
+    public void annualPercentageRate() {
+        assertEquals(credit.getAnnualPercentageRate(), credit.getAnnualPercentageRate2(), 1E-6);
+    }
+
+    @Test
+    public void tostring() {
+        assertEquals(credit.toString().getClass(), String.class);
     }
 }

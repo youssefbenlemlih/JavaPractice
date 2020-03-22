@@ -1,5 +1,11 @@
 package main.de.hawhamburg.krukenberg_benlemlih;
 
+/**
+ * Credit class representing a bank credit
+ *
+ * @author Jonas Krukenberg
+ * @author Youssef Benlemlih
+ */
 public class Credit {
 
     public static final double RATE_ACCURACY = 0.000001;
@@ -10,8 +16,7 @@ public class Credit {
      */
     public double interestRate;
     public int durationInMonths;
-
-    private double ratePerMonth;
+    public double ratePerMonth;
 
     /**
      * @param baseAmount       total credit amount in Euros
@@ -26,6 +31,8 @@ public class Credit {
     }
 
     /**
+     * this is the main calculation for the task
+     *
      * @return annual percentage Rate (Jaehrlicher Effektivzins)
      */
     public double getAnnualPercentageRate() {
@@ -33,7 +40,6 @@ public class Credit {
         double p1 = 0, p2 = 0; // percentage / 100
 
         while (f(p2) < 0) {
-            System.out.println(f(p2));
             p1 = p2;
             p2 += 0.005;
         }
@@ -52,39 +58,68 @@ public class Credit {
     }
 
     /**
-     * @param p percentage / 100
-     * @return f(p)
+     * because there are more different formulas for calculation we setup this one to compare both in test cases
+     * if we find a working method, there will be no need of a second one
+     *
+     * @return annual percentage Rate (Jaehrlicher Effektivzins)
      */
-    public double f(double p) throws IllegalArgumentException {
-        if (p < 0 || p > 1) {
-            throw new IllegalArgumentException("p must be between 0 and 1 but is " + p);
+    public double getAnnualPercentageRate2() {
+
+        double p1 = 0, p2 = 0; // percentage / 100
+
+        while (f2(p2) < 0) {
+            System.out.println(f2(p2));
+            p1 = p2;
+            p2 += 0.005;
         }
 
-        // https://de.wikipedia.org/wiki/Effektiver_Jahreszins
-        return baseAmount * (1 + p) - ratePerMonth * (durationInMonths + (((durationInMonths - 1.0) * durationInMonths) / (2 * durationInMonths)) * p);
+        double pMiddle;
+        do {
+            pMiddle = (p1 + p2) / 2;
+            if (f2(pMiddle) > 0) {
+                p2 = pMiddle;
+            } else {
+                p1 = pMiddle;
+            }
+        } while (Math.abs(f2(p2) - f2(p1)) > RATE_ACCURACY);
 
-//        https://books.google.de/books?id=REcwk9DUpowC&pg=PA217&lpg=PA217&dq=effektiver+jahreszins+nullstelle&source=bl&ots=1ml3Q_NTQK&sig=ACfU3U2lcvhMXN2qjZ-mLhXBPU64RpOsdQ&hl=de&sa=X&ved=2ahUKEwiGt6Dpv6noAhVENOwKHWK5BakQ6AEwF3oECAkQAQ#v=onepage&q&f=false
-//        return Math.pow(1 + p, durationInMonths / 12.0) * baseAmount - sigma(p) * ratePerMonth;
+        return Math.round(((p1 + p2) / 2) * 10000) / 10000.0;
     }
 
-    private double sigma(double p) {
-        double sum = 0;
-        for (int j = 0; j <= durationInMonths / 12 - 1; j++) {
-            sum += Math.pow(1 + p, j);
-        }
-        return sum;
+    @Override
+    public String toString() {
+        return "Credit information: \nBase amount: " + baseAmount + "\nInterest rate: " + interestRate +
+                "\nDuration in months: " + durationInMonths + "\nRate per month: " + ratePerMonth +
+                "\nAnnual percentage rate: " + getAnnualPercentageRate();
     }
 
     /**
      * @param p percentage / 100
      * @return f(p)
+     * @link https://de.wikipedia.org/wiki/Effektiver_Jahreszins
      */
-    public double f2(double p) throws IllegalArgumentException {
+    private double f(double p) throws IllegalArgumentException {
         if (p < 0 || p > 1) {
             throw new IllegalArgumentException("p must be between 0 and 1 but is " + p);
         }
 
-//        https://www.gesetze-im-internet.de/pangv/anlage.html
+        return baseAmount * (1 + p) - ratePerMonth *
+                (durationInMonths + (((durationInMonths - 1.0) * durationInMonths) / (2 * durationInMonths)) * p);
+    }
+
+    /**
+     * alternate calculation for f(p)
+     *
+     * @param p percentage / 100
+     * @return f(p)
+     * @link https://www.gesetze-im-internet.de/pangv/anlage.html
+     */
+    private double f2(double p) throws IllegalArgumentException {
+        if (p < 0 || p > 1) {
+            throw new IllegalArgumentException("p must be between 0 and 1 but is " + p);
+        }
+
+//
         double leftSum = 0;
         for (int k = 1; k <= durationInMonths; k++) {
             leftSum += baseAmount * Math.pow(1 + p * 100, -(k - 1) / 12.0);
@@ -96,13 +131,6 @@ public class Credit {
         }
 
         return leftSum - rightSum;
-    }
-
-    @Override
-    public String toString() {
-        return "Credit information: \nBase amount: " + baseAmount + "\nInterest rate: " + interestRate +
-                "\nDuration in months: " + durationInMonths + "\nRate per month: " + ratePerMonth +
-                "\nAnnual percentage rate: " + getAnnualPercentageRate();
     }
 
     /**
