@@ -55,7 +55,7 @@ public class Credit {
      * @param p percentage / 100
      * @return f(p)
      */
-    private double f(double p) throws IllegalArgumentException {
+    public double f(double p) throws IllegalArgumentException {
         if (p < 0 || p > 1) {
             throw new IllegalArgumentException("p must be between 0 and 1 but is " + p);
         }
@@ -73,6 +73,29 @@ public class Credit {
             sum += Math.pow(1 + p, j);
         }
         return sum;
+    }
+
+    /**
+     * @param p percentage / 100
+     * @return f(p)
+     */
+    public double f2(double p) throws IllegalArgumentException {
+        if (p < 0 || p > 1) {
+            throw new IllegalArgumentException("p must be between 0 and 1 but is " + p);
+        }
+
+//        https://www.gesetze-im-internet.de/pangv/anlage.html
+        double leftSum = 0;
+        for (int k = 1; k <= durationInMonths; k++) {
+            leftSum += baseAmount * Math.pow(1 + p * 100, -(k - 1) / 12.0);
+        }
+
+        double rightSum = 0;
+        for (int l = 1; l < durationInMonths; l++) {
+            rightSum += ratePerMonth * Math.pow(1 + p * 100, -(l - 1) / 12.0);
+        }
+
+        return leftSum - rightSum;
     }
 
     @Override
