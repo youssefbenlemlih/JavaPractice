@@ -7,20 +7,6 @@ public class Complex {
         return new Complex(0,0);
     }
 
-    public static Complex FromPolar(double abs, double phi){
-       return new Complex(abs*Math.cos(phi),
-                                abs*Math.sin(phi));
-    }
-
-    public void setAngle(double angle){
-        Complex fromPolar = FromPolar(getAbs(),angle);
-        setReal(fromPolar.getReal());
-        setImaginary(fromPolar.getImaginary());
-    }
-    public void setAbs(double abs){
-        multiply(abs/getAbs());
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,13 +32,6 @@ public class Complex {
                 '}';
     }
 
-    public double getAngle(){
-        return Math.atan2(imaginary,real);
-    }
-
-    public double getAbs(){
-        return Math.sqrt(real*real+imaginary*imaginary);
-    }
     public Complex(double real) {
         this.real = real;
         this.imaginary = 0;
