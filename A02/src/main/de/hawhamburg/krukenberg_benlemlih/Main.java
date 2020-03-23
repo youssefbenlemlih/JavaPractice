@@ -1,4 +1,4 @@
-package main.de.hawhamburg.krukenberg_benlemlih;
+package A02.src.main.de.hawhamburg.krukenberg_benlemlih;
 
 public class Main {
 

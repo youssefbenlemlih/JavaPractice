@@ -1,11 +1,10 @@
-package test;
+package A01.src.test;
 
-import static org.junit.Assert.*;
-
+import A01.src.main.de.hawhamburg.krukenberg_benlemlih.Credit;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.de.hawhamburg.krukenberg_benlemlih.Credit;
+import static org.junit.Assert.*;
 
 /**
  * Tests for credit calculations on class Credit
