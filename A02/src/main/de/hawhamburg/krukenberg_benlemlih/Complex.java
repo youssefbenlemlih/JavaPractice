@@ -26,10 +26,13 @@ public class Complex {
         if (this == o) return true;
         if (!(o instanceof Complex)) return false;
         Complex complex = (Complex) o;
-        return Double.compare(complex.getReal(), getReal()) == 0 &&
-                Double.compare(complex.getImaginary(), getImaginary()) == 0;
+        return compareDoubles(complex.getReal(), getReal()) &&
+               compareDoubles(complex.getImaginary(), getImaginary());
     }
 
+    private boolean compareDoubles(double d1,double d2){
+        return Math.abs(d1-d2)<= 0.00001;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(getReal(), getImaginary());
@@ -60,10 +63,10 @@ public class Complex {
         this.imaginary = imaginary;
     }
 
-    public void add(Complex summand)
+    public void add(Complex other)
     {
-        this.real += summand.getReal();
-        this.imaginary += summand.getImaginary();
+        this.real += other.getReal();
+        this.imaginary += other.getImaginary();
     }
 
     public void substract(Complex other)
