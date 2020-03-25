@@ -1,8 +1,8 @@
-package A02.src.main.de.hawhamburg.krukenberg_benlemlih;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class Complex {
+public class Complex implements Polar{
     public static Complex Zero() {
         return new Complex(0, 0);
     }
@@ -80,5 +80,25 @@ public class Complex {
                 "real=" + real +
                 ", imaginary=" + imaginary +
                 '}';
+    }
+
+    @Override
+    public double getAngle() {
+        return 0;
+    }
+
+    @Override
+    public void setAngle(double angle) {
+
+    }
+
+    @Override
+    public double getAbsolute() {
+        return 0;
+    }
+
+    @Override
+    public void setAbsolute(double absolute) {
+
     }
 }

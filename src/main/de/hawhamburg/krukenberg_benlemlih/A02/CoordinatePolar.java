@@ -1,8 +1,8 @@
-package A02.src.main.de.hawhamburg.krukenberg_benlemlih;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class PolarCoordinate {
+public class CoordinatePolar implements Polar{
     private double absolute;
     private double angle;
 
@@ -22,7 +22,7 @@ public class PolarCoordinate {
         this.absolute = absolute;
     }
 
-    public PolarCoordinate(double angle, double absolute) {
+    public CoordinatePolar(double angle, double absolute) {
         this.angle = angle;
         this.absolute = absolute;
     }
@@ -30,8 +30,8 @@ public class PolarCoordinate {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PolarCoordinate)) return false;
-        PolarCoordinate that = (PolarCoordinate) o;
+        if (!(o instanceof CoordinatePolar)) return false;
+        CoordinatePolar that = (CoordinatePolar) o;
         return ComplexMath.equalDoubles(that.getAngle(), getAngle()) &&
                ComplexMath.equalDoubles(that.getAbsolute(), getAbsolute());
     }

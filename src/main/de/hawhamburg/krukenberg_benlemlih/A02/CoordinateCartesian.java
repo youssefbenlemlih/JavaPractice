@@ -1,11 +1,11 @@
-package A02.src.main.de.hawhamburg.krukenberg_benlemlih;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class CartesianCoordinate {
+public class CoordinateCartesian implements Cartesian{
     private double x;
 
-    public CartesianCoordinate(double x, double y) {
+    public CoordinateCartesian(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -21,8 +21,8 @@ public class CartesianCoordinate {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CartesianCoordinate)) return false;
-        CartesianCoordinate that = (CartesianCoordinate) o;
+        if (!(o instanceof CoordinateCartesian)) return false;
+        CoordinateCartesian that = (CoordinateCartesian) o;
         return ComplexMath.equalDoubles(that.getX(), getX()) &&
                 ComplexMath.equalDoubles(that.getY(), getY());
     }

@@ -1,8 +1,8 @@
-package A02.src.main.de.hawhamburg.krukenberg_benlemlih;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ComplexTest {
+class ComplexTest{
 
     @org.junit.jupiter.api.Test
     void testEquality() {

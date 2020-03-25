@@ -1,6 +1,6 @@
-package A01.src.test;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A01.test;
 
-import A01.src.main.de.hawhamburg.krukenberg_benlemlih.Credit;
+import src.main.de.hawhamburg.krukenberg_benlemlih.A01.Credit;
 import org.junit.Before;
 import org.junit.Test;
 
