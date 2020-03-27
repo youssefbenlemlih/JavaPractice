@@ -2,7 +2,7 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class CoordinateCartesian implements Cartesian{
+public class CoordinateCartesian implements Cartesian {
     private double x;
 
     public CoordinateCartesian(double x, double y) {

@@ -2,7 +2,7 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class Complex implements Polar{
+public class Complex implements Polar {
     public static Complex Zero() {
         return new Complex(0, 0);
     }
@@ -38,7 +38,7 @@ public class Complex implements Polar{
     }
 
     public void divide(double factor) {
-        multiply(1/factor);
+        multiply(1 / factor);
     }
 
     public double getReal() {
