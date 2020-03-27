@@ -1,10 +1,10 @@
 package src.main.de.hawhamburg.krukenberg_benlemlih.A01.test;
 
+import org.junit.jupiter.api.BeforeEach;
 import src.main.de.hawhamburg.krukenberg_benlemlih.A01.Credit;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests for credit calculations on class Credit
@@ -16,7 +16,7 @@ public class CreditTest {
 
     private Credit credit;
 
-    @Before
+    @BeforeEach
     public void before() {
         credit = new Credit(10000, 3.88, 84);
     }

@@ -2,19 +2,21 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class CoordinateCartesian implements Cartesian {
-    private double x;
+public class CoordinateCartesian {
 
-    public CoordinateCartesian(double x, double y) {
-        this.x = x;
-        this.y = y;
+    private double re;
+    private double im;
+
+    public CoordinateCartesian(double re, double im) {
+        this.re = re;
+        this.im = im;
     }
 
     @Override
     public String toString() {
         return "CartesianCoordinate{" +
-                "x=" + x +
-                ", y=" + y +
+                "re=" + re +
+                ", im=" + im +
                 '}';
     }
 
@@ -23,30 +25,28 @@ public class CoordinateCartesian implements Cartesian {
         if (this == o) return true;
         if (!(o instanceof CoordinateCartesian)) return false;
         CoordinateCartesian that = (CoordinateCartesian) o;
-        return ComplexMath.equalDoubles(that.getX(), getX()) &&
-                ComplexMath.equalDoubles(that.getY(), getY());
+        return ComplexMath.equalDoubles(that.getRe(), getRe()) &&
+                ComplexMath.equalDoubles(that.getIm(), getIm());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getX(), getY());
+        return Objects.hash(getRe(), getIm());
     }
 
-    public double getX() {
-        return x;
+    public double getRe() {
+        return re;
     }
 
-    public void setX(double x) {
-        this.x = x;
+    public void setRe(double re) {
+        this.re = re;
     }
 
-    public double getY() {
-        return y;
+    public double getIm() {
+        return im;
     }
 
-    public void setY(double y) {
-        this.y = y;
+    public void setIm(double im) {
+        this.im = im;
     }
-
-    private double y;
 }

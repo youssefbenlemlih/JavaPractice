@@ -2,24 +2,36 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class Complex implements Polar {
-    public static Complex Zero() {
-        return new Complex(0, 0);
-    }
+public class Complex {
+
+    protected double real;
+    protected double imaginary;
 
     public Complex(Complex other) {
         this.real = other.getReal();
         this.imaginary = other.getImaginary();
     }
 
-    public Complex(double real) {
-        this.real = real;
+    public Complex(Number real) {
+        setReal(real);
         this.imaginary = 0;
     }
 
-    public Complex(double real, double imaginary) {
-        this.real = real;
-        this.imaginary = imaginary;
+    public Complex(Number real, Number imaginary) {
+        setReal(real);
+        setImaginary(imaginary);
+    }
+
+    public Complex(CoordinateCartesian coordinateCartesian) {
+        Complex complex = ComplexMath.CartesianCoordinateToComplex(coordinateCartesian);
+        this.real = complex.getReal();
+        this.imaginary = complex.getImaginary();
+    }
+
+    public Complex(CoordinatePolar coordinatePolar) {
+        Complex complex = ComplexMath.PolarCoordinateToComplex(coordinatePolar);
+        this.real = complex.getReal();
+        this.imaginary = complex.getImaginary();
     }
 
     public void add(Complex other) {
@@ -27,38 +39,52 @@ public class Complex implements Polar {
         this.imaginary += other.getImaginary();
     }
 
-    public void substract(Complex other) {
+    public void add(Number num) {
+        this.real += Double.parseDouble(num.toString());
+    }
+
+    public void subtract(Complex other) {
         this.real -= other.getReal();
         this.imaginary -= other.getImaginary();
     }
 
-    public void multiply(double factor) {
-        this.real *= factor;
-        this.imaginary *= factor;
+    public void subtract(Number num) {
+        this.real -= Double.parseDouble(num.toString());
     }
 
-    public void divide(double factor) {
-        multiply(1 / factor);
+    public void multiply(Complex other) {
+// TODO
+    }
+
+    public void multiply(Number num) {
+        double factor = Double.parseDouble(num.toString());
+        this.real *= (double) factor;
+        this.imaginary *= (double) factor;
+    }
+
+    public void divide(Complex other) {
+// TODO
+    }
+
+    public void divide(Number divisor) {
+        multiply(1 / Double.parseDouble(divisor.toString()));
     }
 
     public double getReal() {
-        return real;
+        return real; // FIXME: Kapselung?
     }
 
-    public void setReal(double real) {
-        this.real = real;
+    public void setReal(Number real) {
+        this.real = Double.parseDouble(real.toString());
     }
 
-    public void setImaginary(double imaginary) {
-        this.imaginary = imaginary;
+    public void setImaginary(Number imaginary) {
+        this.imaginary = Double.parseDouble(imaginary.toString());
     }
 
     public double getImaginary() {
-        return imaginary;
+        return imaginary; // FIXME: Kapselung?
     }
-
-    public double real;
-    public double imaginary;
 
     @Override
     public boolean equals(Object o) {
@@ -76,29 +102,6 @@ public class Complex implements Polar {
 
     @Override
     public String toString() {
-        return "Complex{" +
-                "real=" + real +
-                ", imaginary=" + imaginary +
-                '}';
-    }
-
-    @Override
-    public double getAngle() {
-        return 0;
-    }
-
-    @Override
-    public void setAngle(double angle) {
-
-    }
-
-    @Override
-    public double getAbsolute() {
-        return 0;
-    }
-
-    @Override
-    public void setAbsolute(double absolute) {
-
+        return real + ((Math.signum(imaginary) >= 0) ? "+" : "") + imaginary + "i";
     }
 }

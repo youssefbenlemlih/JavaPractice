@@ -2,9 +2,15 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class CoordinatePolar implements Polar {
+public class CoordinatePolar {
+
     private double absolute;
     private double angle;
+
+    public CoordinatePolar(double angle, double absolute) {
+        this.angle = angle;
+        this.absolute = absolute;
+    }
 
     public double getAngle() {
         return angle;
@@ -22,9 +28,12 @@ public class CoordinatePolar implements Polar {
         this.absolute = absolute;
     }
 
-    public CoordinatePolar(double angle, double absolute) {
-        this.angle = angle;
-        this.absolute = absolute;
+    @Override
+    public String toString() {
+        return "PolarCoordinates{" +
+                "abs=" + absolute +
+                "phi=" + angle +
+                "}";
     }
 
     @Override

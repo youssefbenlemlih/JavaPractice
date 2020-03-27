@@ -1,11 +1,11 @@
 package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 public interface Cartesian {
-    public double getX();
+    public double getRe();
 
-    public void setX(double x);
+    public void setRe(double re);
 
-    public double getY();
+    public double getIm();
 
-    public void setY(double y);
+    public void setIm(double im);
 }
