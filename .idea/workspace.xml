@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c9f9855-ebad-4b4b-9a8a-d485780d668f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +39,6 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -95,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585334530662</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Revert &quot;project structure tests&quot;&#10;&#10;This reverts commit c6dd96af">
+      <created>1585337208724</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585337208724</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -104,6 +111,12 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="COLUMN_WIDTH">
+                <map>
+                  <entry key="2" value="110" />
+                  <entry key="3" value="109" />
+                </map>
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -113,7 +126,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="project structure tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="project structure tests" />
+    <MESSAGE value="Revert &quot;project structure tests&quot;&#10;&#10;This reverts commit c6dd96af" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;project structure tests&quot;&#10;&#10;This reverts commit c6dd96af" />
   </component>
   <component name="WindowStateProjectService">
     <state x="100" y="22" width="804" height="667" key="#HTTP_Proxy" timestamp="1584986861704">
@@ -148,10 +162,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="520" y="314" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1585334407147" />
-    <state x="402" y="11" key="CommitChangelistDialog2" timestamp="1585334529570">
+    <state x="402" y="0" key="CommitChangelistDialog2" timestamp="1585337219326">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="402" y="11" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585334529570" />
+    <state x="402" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585337219326" />
     <state x="157" y="-85" width="657" height="560" key="FileChooserDialogImpl" timestamp="1585139949109">
       <screen x="0" y="0" width="1024" height="768" />
     </state>
@@ -180,6 +194,10 @@
       <screen x="0" y="0" width="1024" height="768" />
     </state>
     <state x="-2" y="-18" width="1018" height="758" key="SettingsEditor/0.0.1024.768@0.0.1024.768" timestamp="1585139482390" />
+    <state x="618" y="334" key="VCS.ChangelistChooser" timestamp="1585337243761">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="618" y="334" key="VCS.ChangelistChooser/0.0.1536.824@0.0.1536.824" timestamp="1585337243761" />
     <state x="361" y="137" key="Vcs.Push.Dialog.v2" timestamp="1585334533293">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
