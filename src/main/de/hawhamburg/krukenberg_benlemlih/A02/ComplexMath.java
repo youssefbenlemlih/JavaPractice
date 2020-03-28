@@ -7,12 +7,15 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
  *     <li>equality for doubles with an epsilon</li>
  * </ul>
  * source of calculations:
- * https://www.ingenieurkurse.de/hoehere-mathematik-analysis-lineare-algebra/komplexe-zahlen/komplexe-zahlen-und-polarkoordinaten.html
+ * https://www.ingenieurkurse.de/hoehere-mathematik-analysis-lineare-algebra/komplexe-zahlen/komplexe-zahlen-und
+ * -polarkoordinaten.html
  *
  * @author Youssef Benlemlih
  * @author Jonas Krukenberg
  */
 public final class ComplexMath {
+
+    private ComplexMath() {}
 
     public static CoordinateCartesian complexToCartesianCoordinate(Complex complex) {
         return new CoordinateCartesian(complex.getReal(), complex.getImaginary());
