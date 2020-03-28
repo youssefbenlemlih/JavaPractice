@@ -3,25 +3,30 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Tests for Complex Class
  *
- * @link https://keisan.casio.com/exec/system/1223527679 source for comparing values
+ * @author Youssef Benlemlih
+ * @author Jonas Krukenberg
  */
 class ComplexTest {
 
     private static Complex complex;
-    private static Complex complexOperand;
+    private static Complex complexOther;
     private static CoordinateCartesian coordinateCartesian;
     private static CoordinatePolar coordinatePolar;
 
     @BeforeEach
     void setUp() {
         complex = new Complex(2.3, 4.5);
-        complexOperand = new Complex(-2, -3);
+        complexOther = new Complex(-2, -3);
         coordinateCartesian = new CoordinateCartesian(2.3, 4.5);
         coordinatePolar = new CoordinatePolar(62.927919762007, 5.0537115073973);
     }
@@ -40,37 +45,43 @@ class ComplexTest {
 
     @Test
     void testHashCode() {
-// TODO
+        Set<IComplexContext> s = new HashSet<>();
+        s.add(complex);
+        s.add(new CoordinateCartesian(1,-2));
+        s.add(new CoordinatePolar(30,8));
+        assertTrue(s.contains(new Complex(2.3,4.5)));
+        assertTrue(s.contains(new CoordinateCartesian(1,-2)));
+        assertTrue(s.contains(new CoordinatePolar(30,8)));
     }
 
     @Test
     void testToString() {
         assertEquals("0.0+0.0i", new Complex(0).toString());
         assertEquals("2.3+4.5i", complex.toString());
-        assertEquals("-2.0-3.0i", complexOperand.toString());
+        assertEquals("-2.0-3.0i", complexOther.toString());
     }
 
     @Test
     void testPolarComplexConversion() {
-        assertEquals(complex, ComplexMath.PolarCoordinateToComplex(coordinatePolar));
-        assertEquals(coordinatePolar, ComplexMath.ComplexToPolarCoordinate(complex));
+        assertEquals(complex, ComplexMath.polarCoordinateToComplex(coordinatePolar));
+        assertEquals(coordinatePolar, ComplexMath.complexToPolarCoordinate(complex));
     }
 
     @Test
     void testCartesianComplexConversion() {
-        assertEquals(complex, ComplexMath.CartesianCoordinateToComplex(coordinateCartesian));
-        assertEquals(coordinateCartesian, ComplexMath.ComplexToCartesianCoordinates(complex));
+        assertEquals(complex, ComplexMath.cartesianCoordinateToComplex(coordinateCartesian));
+        assertEquals(coordinateCartesian, ComplexMath.complexToCartesianCoordinate(complex));
     }
 
     @Test
     void testCartesianPolarConversion() {
-        assertEquals(coordinatePolar, ComplexMath.CartesianToPolar(coordinateCartesian));
-        assertEquals(coordinateCartesian, ComplexMath.PolarToCartesian(coordinatePolar));
+        assertEquals(coordinatePolar, ComplexMath.cartesianToPolar(coordinateCartesian));
+        assertEquals(coordinateCartesian, ComplexMath.polarToCartesian(coordinatePolar));
     }
 
     @Test
     void testComplexAddition() {
-        complex.add(complexOperand);
+        complex.add(complexOther);
         assertEquals(new Complex(0.2999999, 1.5), complex);
     }
 
@@ -82,7 +93,7 @@ class ComplexTest {
 
     @Test
     void testComplexSubtraction() {
-        complex.subtract(complexOperand);
+        complex.subtract(complexOther);
         assertEquals(new Complex(4.3, 7.5), complex);
     }
 
@@ -94,8 +105,8 @@ class ComplexTest {
 
     @Test
     void testComplexMultiplication() {
-        complex.multiply(complexOperand);
-        assertEquals(new Complex(0, 0), complex); // TODO: expected value to be estimated
+        complex.multiply(complexOther);
+        assertEquals(new Complex(8.9, -15.9), complex);
     }
 
     @Test
@@ -106,8 +117,8 @@ class ComplexTest {
 
     @Test
     void testComplexDivision() {
-        complex.divide(complexOperand);
-        assertEquals(new Complex(0, 0), complex); // TODO: expected value to be estimated
+        complex.divide(complexOther);
+        assertEquals(new Complex(8.9 / 13, -15.9 / 13), complex); // TODO: expected value to be estimated
     }
 
     @Test

@@ -2,7 +2,14 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class Complex {
+/**
+ * This class represents a mutable <b>complex number</b>
+ * source to arithmetic rules with complex numbers: http://sites.science.oregonstate.edu/~warrenw/COURSES/ph461/H1.pdf
+ *
+ * @author Youssef Benlemlih
+ * @author Jonas Krukenberg
+ */
+public class Complex implements IComplexContext {
 
     protected double real;
     protected double imaginary;
@@ -23,13 +30,13 @@ public class Complex {
     }
 
     public Complex(CoordinateCartesian coordinateCartesian) {
-        Complex complex = ComplexMath.CartesianCoordinateToComplex(coordinateCartesian);
+        Complex complex = ComplexMath.cartesianCoordinateToComplex(coordinateCartesian);
         this.real = complex.getReal();
         this.imaginary = complex.getImaginary();
     }
 
     public Complex(CoordinatePolar coordinatePolar) {
-        Complex complex = ComplexMath.PolarCoordinateToComplex(coordinatePolar);
+        Complex complex = ComplexMath.polarCoordinateToComplex(coordinatePolar);
         this.real = complex.getReal();
         this.imaginary = complex.getImaginary();
     }
@@ -53,7 +60,9 @@ public class Complex {
     }
 
     public void multiply(Complex other) {
-// TODO
+        double productRe = real * other.real - imaginary * other.imaginary;
+        imaginary = real * other.imaginary + other.real * imaginary;
+        real = productRe;
     }
 
     public void multiply(Number num) {
@@ -63,7 +72,8 @@ public class Complex {
     }
 
     public void divide(Complex other) {
-// TODO
+        multiply(other);
+        divide(Math.pow(other.real, 2) + Math.pow(other.imaginary, 2));
     }
 
     public void divide(Number divisor) {
@@ -71,25 +81,29 @@ public class Complex {
     }
 
     public double getReal() {
-        return real; // FIXME: Kapselung?
+        return real;
     }
 
     public void setReal(Number real) {
         this.real = Double.parseDouble(real.toString());
     }
 
+    public double getImaginary() {
+        return imaginary;
+    }
+
     public void setImaginary(Number imaginary) {
         this.imaginary = Double.parseDouble(imaginary.toString());
     }
 
-    public double getImaginary() {
-        return imaginary; // FIXME: Kapselung?
-    }
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Complex)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Complex)) {
+            return false;
+        }
         Complex complex = (Complex) o;
         return ComplexMath.equalDoubles(complex.getReal(), getReal()) &&
                 ComplexMath.equalDoubles(complex.getImaginary(), getImaginary());

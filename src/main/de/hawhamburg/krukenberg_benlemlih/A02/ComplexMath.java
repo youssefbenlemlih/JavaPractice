@@ -1,47 +1,58 @@
 package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
+/**
+ * Utility class for...
+ * <ul>
+ *     <li>conversions between complex numbers, cartesian coordinates, polar coordinates</li>
+ *     <li>equality for doubles with an epsilon</li>
+ * </ul>
+ * source of calculations:
+ * https://www.ingenieurkurse.de/hoehere-mathematik-analysis-lineare-algebra/komplexe-zahlen/komplexe-zahlen-und-polarkoordinaten.html
+ *
+ * @author Youssef Benlemlih
+ * @author Jonas Krukenberg
+ */
 public final class ComplexMath {
 
-    public static CoordinateCartesian ComplexToCartesianCoordinates(Complex complex) {
+    public static CoordinateCartesian complexToCartesianCoordinate(Complex complex) {
         return new CoordinateCartesian(complex.getReal(), complex.getImaginary());
     }
 
-    public static Complex CartesianCoordinateToComplex(CoordinateCartesian coordinate) {
+    public static Complex cartesianCoordinateToComplex(CoordinateCartesian coordinate) {
         return new Complex(coordinate.getRe(), coordinate.getIm());
     }
 
-    public static CoordinatePolar ComplexToPolarCoordinate(Complex complex) {
+    public static CoordinatePolar complexToPolarCoordinate(Complex complex) {
         double real = complex.getReal();
         double imaginary = complex.getImaginary();
-        double angle = Math.atan2(imaginary, real);
+        double angle = Math.toDegrees(Math.atan2(imaginary, real));
         double abs = Math.sqrt(real * real + imaginary * imaginary);
         return new CoordinatePolar(angle, abs);
     }
 
-    public static Complex PolarCoordinateToComplex(CoordinatePolar coordinate) {
-        double phi = coordinate.getAngle();
+    public static Complex polarCoordinateToComplex(CoordinatePolar coordinate) {
+        double phi = Math.toRadians(coordinate.getAngle());
         double abs = coordinate.getAbsolute();
         return new Complex(abs * Math.cos(phi), abs * Math.sin(phi));
     }
 
-    public static CoordinateCartesian PolarToCartesian(CoordinatePolar coordinate) {
-        double abs = coordinate.getAbsolute();
-        double angle = coordinate.getAngle();
-        double x = abs * Math.cos(angle);
-        double y = abs * Math.sin(angle);
-        return new CoordinateCartesian(x, y);
+    /**
+     * Perform transitive conversion: polar -> complex -> cartesian
+     */
+    public static CoordinateCartesian polarToCartesian(CoordinatePolar coordinate) {
+        Complex complex = polarCoordinateToComplex(coordinate);
+        return complexToCartesianCoordinate(complex);
     }
 
-    public static CoordinatePolar CartesianToPolar(CoordinateCartesian coordinate) {
-        double x = coordinate.getRe(),
-                y = coordinate.getIm();
-        double angle = Math.atan2(y, x);
-        double abs = Math.sqrt(x * x + y * y);
-        return new CoordinatePolar(angle, abs);
+    /**
+     * Perform transitive conversion: cartesian -> complex -> polar
+     */
+    public static CoordinatePolar cartesianToPolar(CoordinateCartesian coordinate) {
+        Complex complex = cartesianCoordinateToComplex(coordinate);
+        return complexToPolarCoordinate(complex);
     }
 
     public static boolean equalDoubles(double d1, double d2) {
-
         return Math.abs(d1 - d2) <= 0.00001;
     }
 }
