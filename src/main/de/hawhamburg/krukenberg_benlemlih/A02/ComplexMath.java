@@ -22,7 +22,7 @@ public final class ComplexMath {
     }
 
     public static Complex cartesianCoordinateToComplex(CoordinateCartesian coordinate) {
-        return new Complex(coordinate.getRe(), coordinate.getIm());
+        return new Complex(coordinate.getReal(), coordinate.getImaginary());
     }
 
     public static CoordinatePolar complexToPolarCoordinate(Complex complex) {

@@ -2,21 +2,21 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class CoordinateCartesian implements IComplexContext {
+public class CoordinateCartesian {
 
-    private double re;
-    private double im;
+    private double real;
+    private double imaginary;
 
-    public CoordinateCartesian(double re, double im) {
-        this.re = re;
-        this.im = im;
+    public CoordinateCartesian(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
     }
 
     @Override
     public String toString() {
         return "CartesianCoordinate{" +
-                "re=" + re +
-                ", im=" + im +
+                "real=" + real +
+                ", imaginary=" + imaginary +
                 '}';
     }
 
@@ -25,28 +25,28 @@ public class CoordinateCartesian implements IComplexContext {
         if (this == o) return true;
         if (!(o instanceof CoordinateCartesian)) return false;
         CoordinateCartesian that = (CoordinateCartesian) o;
-        return ComplexMath.equalDoubles(that.getRe(), getRe()) &&
-                ComplexMath.equalDoubles(that.getIm(), getIm());
+        return ComplexMath.equalDoubles(that.getReal(), getReal()) &&
+                ComplexMath.equalDoubles(that.getImaginary(), getImaginary());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getRe(), getIm());
+        return Objects.hash(getReal(), getImaginary());
     }
 
-    public double getRe() {
-        return re;
+    public double getReal() {
+        return real;
     }
 
-    public void setRe(double re) {
-        this.re = re;
+    public void setReal(double real) {
+        this.real = real;
     }
 
-    public double getIm() {
-        return im;
+    public double getImaginary() {
+        return imaginary;
     }
 
-    public void setIm(double im) {
-        this.im = im;
+    public void setImaginary(double imaginary) {
+        this.imaginary = imaginary;
     }
 }

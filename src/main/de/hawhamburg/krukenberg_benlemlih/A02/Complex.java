@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author Youssef Benlemlih
  * @author Jonas Krukenberg
  */
-public class Complex implements IComplexContext {
+public class Complex {
 
     protected double real;
     protected double imaginary;
