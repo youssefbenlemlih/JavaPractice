@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.A02.test;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

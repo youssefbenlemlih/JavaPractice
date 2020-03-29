@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.A02.test;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 /**
  * Wrapper for classes in a context of complex numbers
@@ -6,5 +6,5 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02.test;
  * @author Youssef Benlemlih
  * @author Jonas Krukenberg
  */
-public class IComplexContext {
+public interface IComplexContext {
 }
