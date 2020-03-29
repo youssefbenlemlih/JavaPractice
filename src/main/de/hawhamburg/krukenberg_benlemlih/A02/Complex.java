@@ -123,6 +123,8 @@ public class Complex implements IComplexContext{
 
     @Override
     public String toString() {
-        return real + ((Math.signum(imaginary) >= 0) ? "+" : "") + imaginary + "i";
+        String re = (real == 0.0) ? "" : real + "";
+        String im = (imaginary == 0) ? "" : imaginary + "i";
+        return re + ((imaginary > 0) ? "+" : "") + im;
     }
 }
