@@ -59,6 +59,10 @@ class ComplexTest {
         assertEquals("0.0+0.0i", new Complex(0).toString());
         assertEquals("2.3+4.5i", complex.toString());
         assertEquals("-2.0-3.0i", complexOther.toString());
+        Complex realOnly = new Complex(7);
+        Complex imaginaryOnly = new Complex(0,7);
+        assertEquals("7.0", realOnly.toString());
+        assertEquals("-7.0i", imaginaryOnly.toString());
     }
 
     @Test
@@ -121,21 +125,21 @@ class ComplexTest {
 
     @Test
     void textComplexCos(){
-        assertEquals(new Complex(0,0),ComplexMath.cos(complex));
+        assertEquals(new Complex(-29.99182887397455,-33.558979979687344),ComplexMath.cos(complex));
     }
 
     @Test
     void textComplexSin(){
-        assertEquals(new Complex(0,0),ComplexMath.sin(complex));
+        assertEquals(new Complex(33.56726401630796,-29.98442721596064),ComplexMath.sin(complex));
     }
 
     @Test
     void textComplexTan(){
-        assertEquals(new Complex(0,0),ComplexMath.tan(complex));
+        assertEquals(new Complex(-0.9937185111951266,-0.11215562814844617),ComplexMath.tan(complex));
     }
 
     @Test
     void textComplexExp(){
-        assertEquals(new Complex(0,0),ComplexMath.exp(complex));
+        assertEquals(new Complex(0.6158016656186738,0.10557652108619137),ComplexMath.exp(complex));
     }
 }
