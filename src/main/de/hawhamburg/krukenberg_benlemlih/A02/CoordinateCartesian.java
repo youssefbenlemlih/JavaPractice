@@ -2,7 +2,7 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
 
 import java.util.Objects;
 
-public class CoordinateCartesian {
+public class CoordinateCartesian implements IComplexContext{
 
     private double real;
     private double imaginary;
