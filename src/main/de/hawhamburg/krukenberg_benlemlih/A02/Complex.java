@@ -41,43 +41,50 @@ public class Complex implements IComplexContext{
         this.imaginary = complex.getImaginary();
     }
 
-    public void add(Complex other) {
+    public Complex add(Complex other) {
         this.real += other.getReal();
         this.imaginary += other.getImaginary();
+        return this;
     }
 
-    public void add(Number num) {
+    public Complex add(Number num) {
         this.real += Double.parseDouble(num.toString());
+        return this;
     }
 
-    public void subtract(Complex other) {
+    public Complex subtract(Complex other) {
         this.real -= other.getReal();
         this.imaginary -= other.getImaginary();
+        return this;
     }
 
-    public void subtract(Number num) {
+    public Complex subtract(Number num) {
         this.real -= Double.parseDouble(num.toString());
+        return this;
     }
 
-    public void multiply(Complex other) {
+    public Complex multiply(Complex other) {
         double productRe = real * other.real - imaginary * other.imaginary;
         imaginary = real * other.imaginary + other.real * imaginary;
         real = productRe;
+        return this;
     }
 
-    public void multiply(Number num) {
+    public Complex multiply(Number num) {
         double factor = Double.parseDouble(num.toString());
-        this.real *= (double) factor;
-        this.imaginary *= (double) factor;
+        this.real *= factor;
+        this.imaginary *= factor;
+        return this;
     }
 
-    public void divide(Complex other) {
+    public Complex divide(Complex other) {
         multiply(other);
-        divide(Math.pow(other.real, 2) + Math.pow(other.imaginary, 2));
+        return divide(Math.pow(other.real, 2) + Math.pow(other.imaginary, 2));
     }
 
-    public void divide(Number divisor) {
+    public Complex divide(Number divisor) {
         multiply(1 / Double.parseDouble(divisor.toString()));
+        return this;
     }
 
     public double getReal() {

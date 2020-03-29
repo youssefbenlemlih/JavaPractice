@@ -55,6 +55,39 @@ public final class ComplexMath {
         return complexToPolarCoordinate(complex);
     }
 
+    /**
+     * source: https://proofwiki.org/wiki/Sine_of_Complex_Number
+     * @return new Complex cosine of other
+     */
+    public Complex sin(Complex other) {
+        double real = other.getReal();
+        double imaginary = other.getImaginary();
+        return new Complex(Math.sin(real) * Math.cosh(imaginary), Math.cos(real) * Math.sinh(imaginary));
+    }
+
+    /**
+     * https://proofwiki.org/wiki/Cosine_of_Complex_Number
+     * @return new Complex cosine of other
+     */
+    public Complex cos(Complex other) {
+        double real = other.getReal();
+        double imaginary = other.getImaginary();
+        return new Complex(Math.cos(real) * Math.cosh(imaginary), -Math.sin(real) * Math.sinh(imaginary));
+    }
+
+    /**
+     * @return new Complex tangens of other
+     */
+    public Complex tan(Complex other) {
+        double real = other.getReal();
+        double imaginary = other.getImaginary();
+        return sin(other).divide(cos(other));
+    }
+
+    public Complex exp(Complex other) {
+
+    }
+
     public static boolean equalDoubles(double d1, double d2) {
         return Math.abs(d1 - d2) <= 0.00001;
     }
