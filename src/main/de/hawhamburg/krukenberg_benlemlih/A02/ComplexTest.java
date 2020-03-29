@@ -81,49 +81,61 @@ class ComplexTest {
 
     @Test
     void testComplexAddition() {
-        complex.add(complexOther);
-        assertEquals(new Complex(0.2999999, 1.5), complex);
+        assertEquals(new Complex(0.2999999, 1.5), complex.add(complexOther));
     }
 
     @Test
     void testNumberAddition() {
-        complex.add(2);
-        assertEquals(new Complex(4.3, 4.5), complex);
+        assertEquals(new Complex(4.3, 4.5), complex.add(2));
     }
 
     @Test
     void testComplexSubtraction() {
-        complex.subtract(complexOther);
-        assertEquals(new Complex(4.3, 7.5), complex);
+        assertEquals(new Complex(4.3, 7.5), complex.subtract(complexOther));
     }
 
     @Test
     void testNumberSubtraction() {
-        complex.subtract(2);
-        assertEquals(new Complex(0.3, 4.5), complex);
+        assertEquals(new Complex(0.3, 4.5), complex.subtract(2));
     }
 
     @Test
     void testComplexMultiplication() {
-        complex.multiply(complexOther);
-        assertEquals(new Complex(8.9, -15.9), complex);
+        assertEquals(new Complex(8.9, -15.9), complex.multiply(complexOther));
     }
 
     @Test
     void testNumberMultiplication() {
-        complex.multiply(2);
-        assertEquals(new Complex(4.6, 9), complex);
+        assertEquals(new Complex(4.6, 9), complex.multiply(2));
     }
 
     @Test
     void testComplexDivision() {
-        complex.divide(complexOther);
-        assertEquals(new Complex(8.9 / 13, -15.9 / 13), complex); // TODO: expected value to be estimated
+        assertEquals(new Complex(8.9 / 13, -15.9 / 13), complex.divide(complexOther)); // TODO: expected value to be estimated
     }
 
     @Test
     void testNumberDivision() {
-        complex.divide(2);
-        assertEquals(new Complex(1.15, 2.25), complex);
+        assertEquals(new Complex(1.15, 2.25), complex.divide(2));
+    }
+
+    @Test
+    void textComplexCos(){
+        assertEquals(new Complex(0,0),ComplexMath.cos(complex));
+    }
+
+    @Test
+    void textComplexSin(){
+        assertEquals(new Complex(0,0),ComplexMath.sin(complex));
+    }
+
+    @Test
+    void textComplexTan(){
+        assertEquals(new Complex(0,0),ComplexMath.tan(complex));
+    }
+
+    @Test
+    void textComplexExp(){
+        assertEquals(new Complex(0,0),ComplexMath.exp(complex));
     }
 }

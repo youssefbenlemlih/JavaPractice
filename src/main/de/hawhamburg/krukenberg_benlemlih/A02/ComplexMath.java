@@ -58,32 +58,30 @@ public final class ComplexMath {
 
     /**
      * source: https://proofwiki.org/wiki/Sine_of_Complex_Number
-     * @return new Complex cosine of other
+     * @return new Complex cosine of complex
      */
-    public Complex sin(Complex other) {
-        double real = other.getReal();
-        double imaginary = other.getImaginary();
+    public static Complex sin(Complex complex) {
+        double real = complex.getReal();
+        double imaginary = complex.getImaginary();
         return new Complex(Math.sin(real) * Math.cosh(imaginary), Math.cos(real) * Math.sinh(imaginary));
     }
 
     /**
      * source: https://proofwiki.org/wiki/Cosine_of_Complex_Number
-     * @return new Complex cosine of other
+     * @return new Complex cosine of complex
      */
-    public Complex cos(Complex other) {
-        double real = other.getReal();
-        double imaginary = other.getImaginary();
+    public static Complex cos(Complex complex) {
+        double real = complex.getReal();
+        double imaginary = complex.getImaginary();
         return new Complex(Math.cos(real) * Math.cosh(imaginary), -Math.sin(real) * Math.sinh(imaginary));
     }
 
     /**
      * source: https://proofwiki.org/wiki/Tangent_of_Complex_Number
-     * @return new Complex tangens of other
+     * @return new Complex tangens of complex
      */
-    public Complex tan(Complex other) {
-        double real = other.getReal();
-        double imaginary = other.getImaginary();
-        return sin(other).divide(cos(other));
+    public static Complex tan(Complex complex) {
+        return sin(complex).divide(cos(complex));
     }
 
     public static Complex exp(Complex complex) {
