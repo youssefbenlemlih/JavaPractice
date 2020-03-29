@@ -4,6 +4,7 @@ package src.main.de.hawhamburg.krukenberg_benlemlih.A02;
  * Utility class for...
  * <ul>
  *     <li>conversions between complex numbers, cartesian coordinates, polar coordinates</li>
+ *     <li>implementation of sin(), cos(), tan() and exp()</li>
  *     <li>equality for doubles with an epsilon</li>
  * </ul>
  * source of calculations:
@@ -66,7 +67,7 @@ public final class ComplexMath {
     }
 
     /**
-     * https://proofwiki.org/wiki/Cosine_of_Complex_Number
+     * source: https://proofwiki.org/wiki/Cosine_of_Complex_Number
      * @return new Complex cosine of other
      */
     public Complex cos(Complex other) {
@@ -76,6 +77,7 @@ public final class ComplexMath {
     }
 
     /**
+     * source: https://proofwiki.org/wiki/Tangent_of_Complex_Number
      * @return new Complex tangens of other
      */
     public Complex tan(Complex other) {
@@ -84,8 +86,9 @@ public final class ComplexMath {
         return sin(other).divide(cos(other));
     }
 
-    public Complex exp(Complex other) {
-
+    public static Complex exp(Complex complex) {
+        return new Complex(Math.exp(complex.getReal() * Math.cos(complex.imaginary)),
+                Math.exp(complex.getReal() * Math.sin(complex.getImaginary())));
     }
 
     public static boolean equalDoubles(double d1, double d2) {
