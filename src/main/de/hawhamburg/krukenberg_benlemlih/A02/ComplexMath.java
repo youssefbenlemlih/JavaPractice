@@ -84,6 +84,9 @@ public final class ComplexMath {
         return sin(complex).divide(cos(complex));
     }
 
+    /**
+     * source: https://proofwiki.org/wiki/Definition:Exponential_Function/Complex#By_Real_Functions
+     */
     public static Complex exp(Complex complex) {
         return new Complex(Math.exp(complex.getReal() * Math.cos(complex.imaginary)),
                 Math.exp(complex.getReal() * Math.sin(complex.getImaginary())));
