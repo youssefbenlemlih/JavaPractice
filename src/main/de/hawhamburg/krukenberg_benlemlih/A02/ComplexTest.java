@@ -45,7 +45,7 @@ class ComplexTest {
 
     @Test
     void testHashCode() {
-        Set<IComplexContext> s = new HashSet<>();
+        Set<Object> s = new HashSet<>();
         s.add(complex);
         s.add(new CoordinateCartesian(1,-2));
         s.add(new CoordinatePolar(30,8));
@@ -56,13 +56,11 @@ class ComplexTest {
 
     @Test
     void testToString() {
-        assertEquals("0.0+0.0i", new Complex(0).toString());
+        assertEquals("0", new Complex(0).toString());
         assertEquals("2.3+4.5i", complex.toString());
         assertEquals("-2.0-3.0i", complexOther.toString());
-        Complex realOnly = new Complex(7);
-        Complex imaginaryOnly = new Complex(0,7);
-        assertEquals("7.0", realOnly.toString());
-        assertEquals("-7.0i", imaginaryOnly.toString());
+        assertEquals("7.0",  new Complex(7).toString());
+        assertEquals("+7.0i", new Complex(0,7).toString());
     }
 
     @Test
@@ -115,7 +113,7 @@ class ComplexTest {
 
     @Test
     void testComplexDivision() {
-        assertEquals(new Complex(8.9 / 13, -15.9 / 13), complex.divide(complexOther)); // TODO: expected value to be estimated
+        assertEquals(new Complex(8.9 / 13, -15.9 / 13), complex.divide(complexOther));
     }
 
     @Test
@@ -125,21 +123,21 @@ class ComplexTest {
 
     @Test
     void textComplexCos(){
-        assertEquals(new Complex(-29.99182887397455,-33.558979979687344),ComplexMath.cos(complex));
+        assertEquals(new Complex(-29.991828,-33.5589799),ComplexMath.cos(complex));
     }
 
     @Test
     void textComplexSin(){
-        assertEquals(new Complex(33.56726401630796,-29.98442721596064),ComplexMath.sin(complex));
+        assertEquals(new Complex(33.567264,-29.9844272),ComplexMath.sin(complex));
     }
 
     @Test
     void textComplexTan(){
-        assertEquals(new Complex(-0.9937185111951266,-0.11215562814844617),ComplexMath.tan(complex));
+        assertEquals(new Complex(-0.993718,-0.1121556),ComplexMath.tan(complex));
     }
 
     @Test
     void textComplexExp(){
-        assertEquals(new Complex(0.6158016656186738,0.10557652108619137),ComplexMath.exp(complex));
+        assertEquals(new Complex(0.615801,0.1055765),ComplexMath.exp(complex));
     }
 }

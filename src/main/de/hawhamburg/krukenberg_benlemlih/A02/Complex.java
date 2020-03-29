@@ -9,7 +9,7 @@ import java.util.Objects;
  * @author Youssef Benlemlih
  * @author Jonas Krukenberg
  */
-public class Complex implements IComplexContext{
+public class Complex {
 
     protected double real;
     protected double imaginary;
@@ -123,6 +123,9 @@ public class Complex implements IComplexContext{
 
     @Override
     public String toString() {
+        if (real == 0 && imaginary == 0) {
+            return "0";
+        }
         String re = (real == 0.0) ? "" : real + "";
         String im = (imaginary == 0) ? "" : imaginary + "i";
         return re + ((imaginary > 0) ? "+" : "") + im;
