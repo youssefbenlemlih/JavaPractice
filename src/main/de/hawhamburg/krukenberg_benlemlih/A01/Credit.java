@@ -1,4 +1,4 @@
-package main.de.hawhamburg.krukenberg_benlemlih;
+package src.main.de.hawhamburg.krukenberg_benlemlih.A01;
 
 /**
  * Credit class representing a bank credit
