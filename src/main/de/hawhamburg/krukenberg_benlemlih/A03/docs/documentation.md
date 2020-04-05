@@ -9,7 +9,7 @@ da `null` kein Objekt referenziert, also weder ein `Object`, noch ein `double[]`
 Erwartungsgemäß sollte also eine Exception geworfen werden.
   
 Führen wir den Code allerdings aus, wird "double array" ausgegeben.  
-Also wird offenbar immer der Konstruktor genommen, bei dem der Wert des erwarteten Typs `null` sein kann.  
+Also wird offenbar immer der Konstruktor genommen, bei dem der Defaultwert des erwarteten Typs `null` ist.  
 Schließlich funktioniert das auch mit z.B. String, int[] oder Double, 
 aber nicht mit primitiven Typen wie double oder int.
 
