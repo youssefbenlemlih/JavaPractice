@@ -1,5 +1,7 @@
 package src.main.de.hawhamburg.krukenberg_benlemlih.a04.payment;
 
+import java.util.function.DoubleUnaryOperator;
+
 /**
  * @author Jonas Krukenberg
  * @author Youssef Benlemlih
@@ -21,7 +23,7 @@ public class FunctionUtils {
      *                   the mathematically correct zero point
      * @return the zero point. <c>Double.Nan</c> if none is found
      */
-    public static double getZeroPoint(Function function,
+    public static double getZeroPoint(DoubleUnaryOperator function,
                                       double rangeStart,
                                       double rangeEnd,
                                       double precision) {
@@ -31,11 +33,11 @@ public class FunctionUtils {
             throw new IllegalArgumentException("rangeStart cannot be greater than rangeEnd");
         }
         double rMiddle = Double.NaN;
-        boolean ascending = function.getValue(rStart) < function.getValue(rEnd);
+        boolean ascending = function.applyAsDouble(rStart) < function.applyAsDouble(rEnd);
         while (Math.abs(rStart - rEnd) > precision
                 && thereIsZeroPointInRange(function, rStart, rEnd)) {
             rMiddle = (rEnd + rStart) / 2;
-            if (function.getValue(rMiddle) > 0 == ascending) {
+            if (function.applyAsDouble(rMiddle) > 0 == ascending) {
                 rEnd = rMiddle;
             } else {
                 rStart = rMiddle;
@@ -47,9 +49,9 @@ public class FunctionUtils {
     /**
      * This function can be used to estimate whether there is a zero point within an interval of a <b>monotonic</b> function
      */
-    public static boolean thereIsZeroPointInRange(Function function, double rangeStart, double rangeEnd) {
-        double valueStart = function.getValue(rangeStart);
-        double valueEnd = function.getValue(rangeEnd);
+    public static boolean thereIsZeroPointInRange(DoubleUnaryOperator function, double rangeStart, double rangeEnd) {
+        double valueStart = function.applyAsDouble(rangeStart);
+        double valueEnd = function.applyAsDouble(rangeEnd);
         return (valueEnd >= 0 && valueStart <= 0) ||
                 (valueEnd <= 0 && valueStart >= 0);
     }

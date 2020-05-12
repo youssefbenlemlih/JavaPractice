@@ -22,7 +22,7 @@ public class MyThing extends Thing {
         this(something.getAsInt());
     }
 
-    public MyThing(int i) {
+    private MyThing(int i) {
         super(i);
         initParam = i;
     }
