@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a05.denksport;
+package main.de.hawhamburg.krukenberg_benlemlih.a05.denksport;
 
 import java.util.*;
 

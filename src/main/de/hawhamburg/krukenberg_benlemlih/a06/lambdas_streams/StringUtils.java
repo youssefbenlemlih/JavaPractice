@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams;
+package main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams;
 
 public class StringUtils {
     public static boolean isPalindrom(String str) {

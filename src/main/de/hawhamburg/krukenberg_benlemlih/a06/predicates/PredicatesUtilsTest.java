@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a06.predicates;
+package main.de.hawhamburg.krukenberg_benlemlih.a06.predicates;
 
 import org.junit.jupiter.api.Test;
 

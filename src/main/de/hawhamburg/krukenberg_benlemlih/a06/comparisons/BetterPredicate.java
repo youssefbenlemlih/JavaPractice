@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a06.comparisons;
+package main.de.hawhamburg.krukenberg_benlemlih.a06.comparisons;
 
 /**
  * A predicate to compare two objects

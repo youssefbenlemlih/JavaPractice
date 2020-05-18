@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a04.thing;
+package main.de.hawhamburg.krukenberg_benlemlih.a04.thing;
 
 /**
  * A class Thing representing some class with a constructor<br>

@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a05.Deque;
+package main.de.hawhamburg.krukenberg_benlemlih.a05.Deque;
 
 import java.util.NoSuchElementException;
 

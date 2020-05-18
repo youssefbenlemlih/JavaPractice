@@ -1,12 +1,10 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams;
+package main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.*;
-
-import static src.main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams.MagicDatesStreams.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -15,15 +13,15 @@ public class Main {
 
         System.out.println("============================= 1. =============================");
 
-        printFirstBinaryPalindromeYear(Year.of(200));
-        printFirstBinaryPalindromeYear(Year.of(1200));
+        MagicDatesStreams.printFirstBinaryPalindromeYear(Year.of(200));
+        MagicDatesStreams.printFirstBinaryPalindromeYear(Year.of(1200));
 
         System.out.println("============================= 2. =============================");
 
         System.out.println("Friday 13th dates (10)");
-        getFriday13Dates(LocalDate.now(), 10).forEach(date -> System.out.println(date.format(dateFormat)));
+        MagicDatesStreams.getFriday13Dates(LocalDate.now(), 10).forEach(date -> System.out.println(date.format(dateFormat)));
         System.out.println("Friday 13th dates until next year");
-        getFriday13Dates(LocalDate.now(), LocalDate.now().plusYears(1)).forEach(date -> System.out.println(date.format(dateFormat)));
+        MagicDatesStreams.getFriday13Dates(LocalDate.now(), LocalDate.now().plusYears(1)).forEach(date -> System.out.println(date.format(dateFormat)));
 
         System.out.println("============================= 3. =============================");
 

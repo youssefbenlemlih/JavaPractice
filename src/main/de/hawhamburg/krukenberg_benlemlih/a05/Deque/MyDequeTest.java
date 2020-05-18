@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a05.Deque;
+package main.de.hawhamburg.krukenberg_benlemlih.a05.Deque;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a06.denksport;
+package main.de.hawhamburg.krukenberg_benlemlih.a06.denksport;
 
 import java.util.ArrayList;
 import java.util.Arrays;

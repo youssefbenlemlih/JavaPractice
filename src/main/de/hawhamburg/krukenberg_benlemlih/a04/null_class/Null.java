@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a04.null_class;
+package main.de.hawhamburg.krukenberg_benlemlih.a04.null_class;
 
 public class Null {
     public static void greet() {

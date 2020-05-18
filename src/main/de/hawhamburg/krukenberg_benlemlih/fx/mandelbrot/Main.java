@@ -28,17 +28,22 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package src.main.de.hawhamburg.krukenberg_benlemlih.fx.mandelbrot;
+package main.de.hawhamburg.krukenberg_benlemlih.fx.mandelbrot;
+
+import static java.lang.Math.*;
 
 import java.util.List;
 import java.util.Locale;
+
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.beans.binding.StringBinding;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.StringProperty;
+import javafx.concurrent.Worker;
 import javafx.geometry.HPos;
 import javafx.geometry.Point2D;
 import javafx.scene.Parent;
@@ -48,6 +53,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
@@ -59,10 +65,6 @@ import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
-import static java.lang.Math.*;
-import javafx.beans.property.BooleanProperty;
-import javafx.concurrent.Worker;
-import javafx.scene.control.ProgressIndicator;
 
 /**
  * UI main class for MandelbrotSet demo.

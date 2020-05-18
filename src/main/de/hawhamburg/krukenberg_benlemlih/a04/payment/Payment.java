@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a04.payment;
+package main.de.hawhamburg.krukenberg_benlemlih.a04.payment;
 
 import java.time.LocalDate;
 import java.time.Period;

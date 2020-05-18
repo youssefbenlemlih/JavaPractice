@@ -1,11 +1,11 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams;
+package main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.stream.Stream;
 
-import static src.main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams.StringUtils.isPalindrom;
+import static main.de.hawhamburg.krukenberg_benlemlih.a06.lambdas_streams.StringUtils.isPalindrom;
 
 /**
  * A utility class that works with streams and years

@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a04.date;
+package main.de.hawhamburg.krukenberg_benlemlih.a04.date;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

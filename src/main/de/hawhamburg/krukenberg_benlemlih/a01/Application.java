@@ -1,4 +1,4 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a01;
+package main.de.hawhamburg.krukenberg_benlemlih.a01;
 
 /**
  * Starts application for credit calculations

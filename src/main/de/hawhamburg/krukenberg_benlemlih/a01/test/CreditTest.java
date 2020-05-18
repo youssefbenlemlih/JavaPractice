@@ -1,6 +1,7 @@
-package src.main.de.hawhamburg.krukenberg_benlemlih.a01.test;
+package main.de.hawhamburg.krukenberg_benlemlih.a01.test;
 
-import src.main.de.hawhamburg.krukenberg_benlemlih.a01.Credit;
+import main.de.hawhamburg.krukenberg_benlemlih.a01.Credit;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
