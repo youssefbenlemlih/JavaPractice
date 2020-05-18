@@ -1,2 +1,0 @@
-An example file used to test a java programm. Awesome, right?
-banana banana banana
