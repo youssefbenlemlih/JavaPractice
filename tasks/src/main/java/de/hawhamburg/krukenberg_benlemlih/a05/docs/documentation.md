@@ -9,31 +9,8 @@ Youssef Benlemlih, Jonas Krukenberg
 
 Das Programm gibt `UNORDERED` aus. Erwarten würden wir eher die Ausgabe `DESCENDING`.
 
-Die Ausgabe kommt dadurch zustande, weil `cmp.compare(int i1, int i2)` als Sortiermethode
-für `Array.sort` verwendet wird und da Array `arr` zufällige Integerzahlen zwischen -2³¹ und 2³¹ beinhaltet.
-
-Durch dieses maximale Intervall kann es in der compare-Methode bei `i2 - i1` zu einem Integer Overflow kommen,
-wenn z.B. i2 = -2³¹ und i1 = 2³¹ ist. Dadurch kommt ein falsches Ergebnis zustande und die Zahlen werden
-falsch einsortiert.
-
-Bei `i1=-2070774536` und `i2=2098106171` ergibt sich `(i2-i1)=-126086589`, das Ergebnis sollte aber positiv sein.
-
-Um das richtigzumachen, können wir entweder die Methode `Integer.compare` benutzen oder bei sort den
-Comparator komplet weglassen. Wir delegieren die `compare` Methode an `Integer.compare(i2,i1)`, die zu keinem
-Overflow kommt, da sie keine Differenz berechnet.
-
-```
-       // so
-       Comparator<Integer> cmp = new Comparator<Integer>() {
-           @Override
-           public int compare(Integer i1, Integer i2) {
-               return Integer.compare(i2,i1);
-           }
-       };
-      Arrays.sort(arr, cmp);
-       // oder so
-      Arrays.sort(arr);
-```
+Die Ausgabe kommt dadurch zustande, weil Integer-Objekte mit == verglichen werden, was nicht korrekt ist,
+da die Referenzen verglichen werden. Das funktioniert nur für Zahlen zwischen -127 und 128.
 
 ### 2. Pair<T\>
 

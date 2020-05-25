@@ -25,14 +25,14 @@ public class MyDeque<E> implements Deque<E> {
         initialElements.forEach(this::addLast);
     }
 
-    MyEntry bottom = null;
+    MyEntry<E> bottom = null;
 
-    private class MyEntry {
+    private static class MyEntry<E> {
 
         private final E value;
-        private MyEntry next;
+        private MyEntry<E> next;
 
-        public MyEntry(E value, MyEntry next) {
+        public MyEntry(E value, MyEntry<E> next) {
             this(value);
             this.next = next;
         }
@@ -54,7 +54,7 @@ public class MyDeque<E> implements Deque<E> {
             if (o == null || getClass() != o.getClass()) {
                 return false;
             }
-            MyDeque<?>.MyEntry other = (MyDeque<?>.MyEntry) o;
+            MyEntry<?> other = (MyEntry<?>) o;
 
             if (next != null) {
                 return value.equals(other.value) && next.equals(other.next);
@@ -74,20 +74,20 @@ public class MyDeque<E> implements Deque<E> {
             return value;
         }
 
-        public MyEntry getNext() {
+        public MyEntry<E> getNext() {
             return next;
         }
 
-        public void setNext(MyEntry next) {
+        public void setNext(MyEntry<E> next) {
             this.next = next;
         }
 
-        public MyEntry getBeforeHead() {
+        public MyEntry<E> getBeforeHead() {
             return (next.equals( getHead())) ? this:
                     next.getBeforeHead();
         }
 
-        public MyEntry getHead() {
+        public MyEntry<E> getHead() {
             return (next == null) ? this : next.getHead();
         }
 
@@ -108,9 +108,9 @@ public class MyDeque<E> implements Deque<E> {
             throw new IllegalArgumentException("e darf nicht null sein");
         }
         if (bottom == null) {
-            bottom = new MyEntry(e);
+            bottom = new MyEntry<>(e);
         } else {
-            bottom = new MyEntry(e, bottom);
+            bottom = new MyEntry<>(e, bottom);
         }
     }
 
@@ -131,10 +131,10 @@ public class MyDeque<E> implements Deque<E> {
             throw new IllegalArgumentException("e darf nicht null sein");
         }
             if (bottom == null) {
-                bottom = new MyEntry(e);
+                bottom = new MyEntry<>(e);
             } else {
                 bottom.getHead()
-                        .setNext(new MyEntry(e));
+                        .setNext(new MyEntry<>(e));
             }
     }
 
@@ -172,7 +172,7 @@ public class MyDeque<E> implements Deque<E> {
         if (size() == 0) {
             throw new NoSuchElementException("Deque is empty!");
         }
-        MyEntry first = bottom;
+        MyEntry<E> first = bottom;
         bottom = bottom.getNext();
         return first.getValue();
     }
@@ -186,12 +186,12 @@ public class MyDeque<E> implements Deque<E> {
             throw new NoSuchElementException("Deque is already empty");
         }
         if(size()==1){
-            MyEntry last = bottom;
+            MyEntry<E> last = bottom;
             bottom = null;
             return last.getValue();
         }
-        MyEntry head = bottom.getHead();
-        MyEntry beforeLast = bottom.getBeforeHead();
+        MyEntry<E> head = bottom.getHead();
+        MyEntry<E> beforeLast = bottom.getBeforeHead();
         if (beforeLast.equals(bottom)) {
             bottom = beforeLast;
         }
