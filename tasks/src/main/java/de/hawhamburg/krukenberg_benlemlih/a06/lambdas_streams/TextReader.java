@@ -9,12 +9,13 @@ import java.util.stream.Stream;
 
 /**
  * A class that reads a file and counts the word occurrences in the given file
+ *
  * @author Jonas Krukenberg
  * @author Youssef Benlemlih
  */
 public class TextReader {
     public static Map<String, Integer> countWordsInFile(String filename) throws IOException {
-            String text = Files.readString(Paths.get(filename));
+        String text = Files.readString(Paths.get(filename));
         return Stream.of(text.split("\\W+"))
                 .collect(Collectors.toMap(word -> word, count -> 1, Integer::sum));
     }

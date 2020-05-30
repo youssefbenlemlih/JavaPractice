@@ -11,6 +11,8 @@ import java.util.stream.Stream;
  */
 public class ArrayDeque<E> implements Deque<E> {
 
+    public static int DEFAULT_CAPACITY = 5;
+
     private E[] elements;
     private int capacity;
 
@@ -18,7 +20,7 @@ public class ArrayDeque<E> implements Deque<E> {
      * Default capacity is 5 elements
      */
     ArrayDeque() {
-        this(5);
+        this(DEFAULT_CAPACITY);
     }
 
     /**
@@ -27,7 +29,6 @@ public class ArrayDeque<E> implements Deque<E> {
     @SuppressWarnings("unchecked")
     ArrayDeque(int capacity) {
         elements = (E[]) new Object[capacity];
-        this.capacity = capacity;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class ArrayDeque<E> implements Deque<E> {
             throw new IllegalArgumentException("e darf nicht null sein");
         }
         if (size() == capacity) {
-            elements = Arrays.copyOf(elements, ++capacity);
+            increaseCapacity();
         }
         if (size() >= 0) {
             System.arraycopy(elements, 0, elements, 1, size());
@@ -54,7 +55,7 @@ public class ArrayDeque<E> implements Deque<E> {
             throw new IllegalArgumentException("e darf nicht null sein");
         }
         if (size() == capacity) {
-            elements = Arrays.copyOf(elements, ++capacity);
+            increaseCapacity();
         }
         elements[size()] = e;
     }
@@ -192,6 +193,10 @@ public class ArrayDeque<E> implements Deque<E> {
                 .filter(Objects::nonNull);
     }
 
+    private void increaseCapacity() {
+        elements = Arrays.copyOf(elements, ++capacity);
+    }
+
     @Override
     public String toString() {
         E[] notNullElements = Arrays.copyOf(elements, size());
@@ -207,7 +212,7 @@ public class ArrayDeque<E> implements Deque<E> {
             return false;
         }
         ArrayDeque<?> that = (ArrayDeque<?>) o;
-        return Arrays.equals(elements, that.elements);
+        return toString().equals(that.toString());
     }
 
     @Override
