@@ -29,7 +29,4 @@ public class NumericIntegration {
     private static Stream<Double> iterateInterval(double left, double right, double stepSize) {
         return Stream.iterate(left + stepSize / 2, x -> x < right, x -> x + stepSize);
     }
-    public static void main(String[] args) {
-      System.out.println("f=x², range=[4,5], step=0.1 -> "+integrateSerial((x)->x*x,4,5,0.1));
-    }
 }
