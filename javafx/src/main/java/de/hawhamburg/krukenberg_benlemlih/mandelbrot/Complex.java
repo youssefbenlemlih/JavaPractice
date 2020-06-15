@@ -31,66 +31,146 @@
 package de.hawhamburg.krukenberg_benlemlih.mandelbrot;
 
 
+import java.util.Objects;
+
 /**
- * A complex number is a number that can be expressed in the form a + b * i, where
- * a and b are real numbers and i is the imaginary unit, which satisfies the
- * equation i ^ 2 = -1. a is the real part and b is the imaginary part of the
- * complex number.
- * <p><i>
- * This source code is provided to illustrate the usage of a given feature
- * or technique and has been deliberately simplified. Additional steps
- * required for a production-quality application, such as security checks,
- * input validation and proper error handling, might not be present in
- * this sample code.</i>
- * @author Alexander Kouznetsov, Tristan Yan
+ * This class represents a mutable <b>complex number</b>
+ * source to arithmetic rules with complex numbers: http://sites.science.oregonstate.edu/~warrenw/COURSES/ph461/H1.pdf
+ *
+ * @author Youssef Benlemlih
+ * @author Jonas Krukenberg
  */
 public class Complex {
 
-    private double re;   // the real part
-    private double im;   // the imaginary part
+    protected double real;
+    protected double imaginary;
 
-    /**
-     * create a new object with the given real and imaginary parts
-     *
-     * @param real a complex number real part
-     * @param imag a complex number imaginary part
-     */
-    public Complex(double real, double imag) {
-        re = real;
-        im = imag;
+    public Complex(Complex other) {
+        this.real = other.getReal();
+        this.imaginary = other.getImaginary();
     }
 
-    /**
-     * Add operation.
-     * @param b summand
-     * @return this Complex object whose value is (this + b)
-     */
-    public Complex plus(Complex b) {
-        re += b.re;
-        im += b.im;
+    public Complex(Number real) {
+        setReal(real);
+        this.imaginary = 0;
+    }
+
+    public Complex(Number real, Number imaginary) {
+        setReal(real);
+        setImaginary(imaginary);
+    }
+
+    public Complex(CoordinateCartesian coordinateCartesian) {
+        Complex complex = ComplexMath.cartesianCoordinateToComplex(coordinateCartesian);
+        this.real = complex.getReal();
+        this.imaginary = complex.getImaginary();
+    }
+
+    public Complex(CoordinatePolar coordinatePolar) {
+        Complex complex = ComplexMath.polarCoordinateToComplex(coordinatePolar);
+        this.real = complex.getReal();
+        this.imaginary = complex.getImaginary();
+    }
+
+    public Complex plus(Complex other) {
+        return add(other);
+    }
+
+    public Complex add(Complex other) {
+        this.real += other.getReal();
+        this.imaginary += other.getImaginary();
         return this;
     }
 
-    /**
-     * Multiply operation.
-     * @param  b multiplier
-     * @return this Complex object whose value is this * b
-     */
-    public Complex times(Complex b) {
-        Complex a = this;
-        double real = a.re * b.re - a.im * b.im;
-        double imag = a.re * b.im + a.im * b.re;
-        re = real;
-        im = imag;
+    public Complex add(Number num) {
+        this.real += Double.parseDouble(num.toString());
         return this;
     }
 
-    /**
-     * Square of Complex object's length, we're using square of length to
-     * eliminate the computation of square root
-     * @return square of length
-    */
+    public Complex subtract(Complex other) {
+        this.real -= other.getReal();
+        this.imaginary -= other.getImaginary();
+        return this;
+    }
+
+    public Complex subtract(Number num) {
+        this.real -= Double.parseDouble(num.toString());
+        return this;
+    }
+
+    public Complex times(Complex other) {
+        return multiply(other);
+    }
+
+    public Complex multiply(Complex other) {
+        double productRe = real * other.real - imaginary * other.imaginary;
+        imaginary = real * other.imaginary + other.real * imaginary;
+        real = productRe;
+        return this;
+    }
+
+    public Complex multiply(Number num) {
+        double factor = Double.parseDouble(num.toString());
+        this.real *= factor;
+        this.imaginary *= factor;
+        return this;
+    }
+
+    public Complex divide(Complex other) {
+        multiply(other);
+        return divide(Math.pow(other.real, 2) + Math.pow(other.imaginary, 2));
+    }
+
+    public Complex divide(Number divisor) {
+        multiply(1 / Double.parseDouble(divisor.toString()));
+        return this;
+    }
+
     public double lengthSQ() {
-        return re * re + im * im;
+        return ComplexMath.square(this);
+    }
+
+    public double getReal() {
+        return real;
+    }
+
+    public void setReal(Number real) {
+        this.real = Double.parseDouble(real.toString());
+    }
+
+    public double getImaginary() {
+        return imaginary;
+    }
+
+    public void setImaginary(Number imaginary) {
+        this.imaginary = Double.parseDouble(imaginary.toString());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Complex)) {
+            return false;
+        }
+        Complex complex = (Complex) o;
+        return ComplexMath.equalDoubles(complex.getReal(), getReal()) &&
+                ComplexMath.equalDoubles(complex.getImaginary(), getImaginary());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getReal(), getImaginary());
+    }
+
+    @Override
+    public String toString() {
+        if (real == 0 && imaginary == 0) {
+            return "0";
+        }
+        String re = (real == 0.0) ? "" : real + "";
+        String im = (imaginary == 0) ? "" : imaginary + "i";
+        return re + ((imaginary > 0) ? "+" : "") + im;
     }
 }
