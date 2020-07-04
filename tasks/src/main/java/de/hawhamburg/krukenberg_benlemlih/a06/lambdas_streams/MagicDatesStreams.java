@@ -21,7 +21,6 @@ public class MagicDatesStreams {
      */
     public static Stream<Year> getYearsStartingFrom(Year startYear) {
         return Stream.iterate(startYear,
-                (_y) -> true,
                 year -> year.plusYears(1));
 
     }
