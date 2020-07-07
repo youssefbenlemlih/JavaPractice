@@ -120,7 +120,7 @@ class QueueTest {
 	}
 
 	/**
-	 * This tests if the required {@link EmptyQueueException} is correctly thrown.
+	 * This de.hawh.wendholt.ws1819.tests if the required {@link EmptyQueueException} is correctly thrown.
 	 */
 	@Test
 	public void testDequeueException() {

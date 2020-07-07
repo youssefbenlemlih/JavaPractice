@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class DateAndTimeUtils {
 
     public static Map<TemporalUnit, Long> getAge(LocalDate date) {
-        Period period = date.until(LocalDate.now());
+        Period period = date.until(LocalDate.of(2019, 7, 3));
         HashMap<TemporalUnit, Long> ageMap = new HashMap<>();
 
         ageMap.put(ChronoUnit.YEARS, (long) period.getYears());

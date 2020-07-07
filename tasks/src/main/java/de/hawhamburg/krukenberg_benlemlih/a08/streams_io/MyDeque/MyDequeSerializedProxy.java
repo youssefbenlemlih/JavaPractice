@@ -12,8 +12,6 @@ import java.util.List;
  */
 public class MyDequeSerializedProxy<E> extends MyDeque<E> implements Serializable {
 
-    private static final long serialVersionUID = 9063402925697206126L;
-
     public MyDequeSerializedProxy(MyDequeProxy<E> proxy) {
         bottom = proxy.bottom;
     }

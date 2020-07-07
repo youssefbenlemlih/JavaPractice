@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * JUnit tests for {@link Payment}
+ * JUnit de.hawh.wendholt.ws1819.tests for {@link Payment}
  *
  * @author Youssef Benlemlih
  * @author Jonas Krukenberg

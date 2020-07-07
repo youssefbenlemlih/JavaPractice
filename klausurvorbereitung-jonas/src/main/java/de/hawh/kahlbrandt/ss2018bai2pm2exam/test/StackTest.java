@@ -69,7 +69,7 @@ class StackTest {
     assertThrows(NegativeArraySizeException.class, ()->new Stack<>(-1));
   }
 /**
- * Very limited tests of some properties of {@link Stack#push}.
+ * Very limited de.hawh.wendholt.ws1819.tests of some properties of {@link Stack#push}.
  */
   @Test
   void testPush() {
@@ -80,7 +80,7 @@ class StackTest {
     assertTrue(INITIAL_CAPACITY < smallIntStack.capacity());
   }
   /**
-   * Very limited tests of some properties of {@link Stack#pop}.
+   * Very limited de.hawh.wendholt.ws1819.tests of some properties of {@link Stack#pop}.
    */
 
   @Test
@@ -89,7 +89,7 @@ class StackTest {
     assertEquals(Integer.valueOf(3), smallIntStack.pop());
   }
   /**
-   * Some limited tests of some properties of {@link Stack#push} 
+   * Some limited de.hawh.wendholt.ws1819.tests of some properties of {@link Stack#push}
    * and {@link Stack#pop}.
    */
   @Test
@@ -100,7 +100,7 @@ class StackTest {
     assertEquals(Integer.valueOf(3), smallIntStack.pop());
   }
   /**
-   * Some limited tests of some properties of {@link Stack#peek} 
+   * Some limited de.hawh.wendholt.ws1819.tests of some properties of {@link Stack#peek}
    */
 
   @Test
@@ -112,7 +112,7 @@ class StackTest {
 
   }
   /**
-   * Some very limited tests, to check the consistent implementation of
+   * Some very limited de.hawh.wendholt.ws1819.tests, to check the consistent implementation of
    * {@link Stack#hashCode()} and {@link Stack#equals(Object)}.
    */
   @Test

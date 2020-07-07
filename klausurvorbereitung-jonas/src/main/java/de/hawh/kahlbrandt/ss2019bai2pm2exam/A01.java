@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public class A01 {
 
     public static Comparator<Integer> naturalOrder() {
-        return (o1, o2) -> o1.equals(o2) ? 0 : (o1 < o2 ? -1 : 0);
+        return (o1, o2) -> o1.equals(o2) ? 0 : (o1 < o2 ? -1 : 1);
     }
 
     public static long[] generateCoprimes(int number) {

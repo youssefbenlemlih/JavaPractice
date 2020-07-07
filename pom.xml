@@ -11,6 +11,7 @@
     <modules>
         <module>javafx</module>
         <module>tasks</module>
+        <module>klausurvorbereitung-jonas</module>
     </modules>
 
     <properties>

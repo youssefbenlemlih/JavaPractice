@@ -1,5 +1,8 @@
 package de.hawh.kahlbrandt.ss2017bai2pm2exam;
 
+import de.hawh.kahlbrandt.QueueEmptyException;
+import de.hawh.kahlbrandt.QueueFullException;
+
 import java.util.Arrays;
 import java.util.Optional;
 
